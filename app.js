@@ -10,8 +10,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mailchimp.setConfig({
-    apiKey:"50a1150aad60a5dc556530ed7e9fe5e8-us21",
-    server: "us21"
+    apiKey:"apiKey",
+    server: "Server"
 })
 
 app.get('/', (req, res) => {
@@ -24,7 +24,7 @@ app.post('/', (req, res) => {
     const email = req.body.Email;
     const mob = req.body.Number;
 
-    const list_id = '860aab985d';
+    const list_id = '{listID}';
  
     async function run() {
         const response = await mailchimp.lists.addListMember(list_id, {
@@ -58,6 +58,3 @@ app.listen(process.env.PORT || 3000, () => {
     console.log('server is listening on 3000');
 })
 
-//API KEY - 53e26cc2b10ce6c02a16e19d1952d284-us21
-
-//LIST ID - 860aab985d
